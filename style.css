@@ -6,14 +6,52 @@
 
 header {
     background-color: black;
+    color: #fafafa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 20px;
 }
 
 header h1 {
-    color: #fafafa;
+    display: inline;
+}
+
+.tmdb-logo {
+    display: inline;
+    margin-top: 10px;
+    max-width: 150px;
+    text-align: center;
 }
 
 .main-page {
-    background-color: #333;
+    background-color: #1a1a1a;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: space-around;
     padding: 20px;
+}
+
+.movie-part {
+    color: #fafafa;
+    max-width: 300px;
+    padding: 20px 0px;
+    position: relative;
+    text-align: center;
+}
+
+.movie-title {
+    font-weight: 700;
+    font-size: 30px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.movie-button {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
 }
