@@ -1,0 +1,36 @@
+@media (max-width: 900px){
+    .movie-explanation-container {
+        border: none;
+    }
+
+    .movie-explanation {
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    .movie-poster-explanation {
+        margin-bottom: 20px;
+        max-width: 300px;
+    }
+
+    .movie-description-container h2 {
+        font-size: 50px;
+    }
+
+    .movie-description-container h2, .movie-description-date {
+        text-align: center;
+    }
+}
+
+@media (max-width: 600px){
+    .movie-description-overview {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .tmdb-logo {
+        margin-top: 10px;
+    }
+}
