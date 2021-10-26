@@ -16,6 +16,9 @@ function show_movies (){
             main_page.innerHTML = "";
             main_page.classList.add("main-page-list");
             main_page.classList.remove("main-page-description");
+
+            window.scrollTo(0, 0);
+
             movie_data = data.results;
             for (const movie of movie_data){
                 const movie_part = document.createElement('div');
