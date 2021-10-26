@@ -66,6 +66,8 @@ header h1 {
 .movie-explanation-container {
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
+    max-width: 1280px;
     height: 100%;
 }
 
