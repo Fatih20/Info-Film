@@ -17,8 +17,6 @@ function show_movies (position_x, position_y){
             main_page.classList.add("main-page-list");
             main_page.classList.remove("main-page-description");
 
-            window.scrollTo(position_x, position_y);
-
             movie_data = data.results;
             for (const movie of movie_data){
                 const movie_part = document.createElement('div');
@@ -44,14 +42,18 @@ function show_movies (position_x, position_y){
 
                 movie_part.addEventListener('click', function() {
                     position_x, position_y = get_position();
+                    console.log(position_x, position_y);
                     show_description(movie, position_x, position_y);
                 });
+                
+            window.scrollTo(position_x, position_y);
             }
 
         })
 };
 
 function get_position (){
+    console.log(window.scrollX, window.scrollY);
     return window.scrollX, window.scrollY;
 }
 
