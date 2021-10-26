@@ -45,7 +45,7 @@ function show_movies (position_x, position_y){
                     console.log(position_x, position_y);
                     show_description(movie, position_x, position_y);
                 });
-                
+
             window.scrollTo(position_x, position_y);
             }
 
@@ -100,9 +100,6 @@ function show_description(movie, position_x, position_y){
     movie_overview.className = "movie-description-overview"
     movie_overview.innerHTML = `${movie.overview}`;
 
-    const spacer_description = document.createElement('div');
-    spacer_description.className = "spacer-description";
-
     movie_description_container.appendChild(movie_title);
     movie_description_container.appendChild(movie_date);
     movie_description_container.appendChild(movie_overview);
@@ -112,7 +109,6 @@ function show_description(movie, position_x, position_y){
 
     movie_explanation_container.appendChild(movie_explanation);
     movie_explanation_container.appendChild(back_button);
-    movie_explanation_container.appendChild(spacer_description);
 
     main_page.appendChild(movie_explanation_container);
 }
