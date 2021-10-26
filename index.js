@@ -4,11 +4,11 @@ const IMAGE_URL = "https://image.tmdb.org/t/p/w300";
 
 window.addEventListener('load',
     function (){
-        show_movies();
+        show_movies(0, 0);
     }
 , false);
 
-function show_movies (){
+function show_movies (position_x, position_y){
     let movie_data;
     fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`)
         .then((res) => res.json())
@@ -17,7 +17,7 @@ function show_movies (){
             main_page.classList.add("main-page-list");
             main_page.classList.remove("main-page-description");
 
-            window.scrollTo(0, 0);
+            window.scrollTo(position_x, position_y);
 
             movie_data = data.results;
             for (const movie of movie_data){
@@ -43,16 +43,19 @@ function show_movies (){
                 main_page.appendChild(movie_part);
 
                 movie_part.addEventListener('click', function() {
-                    show_description(movie);
+                    position_x, position_y = get_position();
+                    show_description(movie, position_x, position_y);
                 });
-
-                console.log(movie);
             }
 
         })
 };
 
-function show_description(movie){
+function get_position (){
+    return window.scrollX, window.scrollY;
+}
+
+function show_description(movie, position_x, position_y){
     main_page.innerHTML = "";
     main_page.classList.add("main-page-description");
     main_page.classList.remove("main-page-list");
@@ -74,7 +77,7 @@ function show_description(movie){
 
     back_button.className = "back-button";
     back_button.addEventListener('click', function (){
-        show_movies();
+        show_movies(position_x, position_y);
     });
 
     const movie_poster_explanation = document.createElement('img');
