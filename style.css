@@ -33,6 +33,13 @@ header h1 {
     padding: 20px;
 }
 
+.main-page-list {
+    flex-direction: row;
+}
+
+.main-page-description {
+    flex-direction: column;
+}
 .movie-part {
     color: #fafafa;
     max-width: 300px;
@@ -54,4 +61,57 @@ header h1 {
     position: absolute;
     top: 0;
     width: 100%;
+}
+
+.movie-explanation-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.movie-explanation {
+    display: flex;
+}
+
+.movie-description-container {
+    color: #fafafa;
+    display: flex;
+    flex-grow: 0;
+    flex-direction: column;
+    padding-left: 20px;
+
+}
+
+.movie-description-container h2 {
+    font-size: 60px;
+}
+
+.movie-description-overview {
+    font-size: 19px;
+    line-height: 1.4;
+    margin: 15px 0px;
+}
+
+.movie-description-date {
+    font-size: 18px;
+}
+
+.spacer-description {
+    flex-grow: 1;
+    height: 100%;
+}
+
+.back-button {
+    border-radius: 5px;
+    display: block;
+    flex-grow: 0;
+    font-size: 15px;
+    margin: 20px auto 0 auto;
+    padding: 10px 15px;
+    transition: all 0.2s;
+}
+
+.back-button:hover{
+    background-color: #4e4e4e;
+    color: #fafafa;
 }

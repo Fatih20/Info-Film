@@ -1,4 +1,6 @@
 const main_page = document.querySelector(".main-page");
+const API_KEY = "d87229b426af9640b5a4df6cd94336d3";
+const IMAGE_URL = "https://image.tmdb.org/t/p/w300";
 
 window.addEventListener('load',
     function (){
@@ -7,13 +9,13 @@ window.addEventListener('load',
 , false);
 
 function show_movies (){
-    const API_KEY = "d87229b426af9640b5a4df6cd94336d3";
-    const IMAGE_URL = "https://image.tmdb.org/t/p/w300";
-
     let movie_data;
     fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`)
         .then((res) => res.json())
         .then((data) => {
+            main_page.innerHTML = "";
+            main_page.classList.add("main-page-list");
+            main_page.classList.remove("main-page-description");
             movie_data = data.results;
             for (const movie of movie_data){
                 const movie_part = document.createElement('div');
@@ -23,7 +25,7 @@ function show_movies (){
                 movie_poster.className = "movie-poster";
                 movie_poster.setAttribute("src", `${IMAGE_URL}${movie.poster_path}`);
                 
-                const movie_title = document.createElement('p');
+                const movie_title = document.createElement('h2');
                 movie_title.innerHTML = `${movie.title}`
                 movie_title.className = "movie-title";
 
@@ -47,24 +49,61 @@ function show_movies (){
         })
 };
 
-function show_description(){
+function show_description(movie){
     main_page.innerHTML = "";
+    main_page.classList.add("main-page-description");
+    main_page.classList.remove("main-page-list");
+
+    const movie_explanation_container = document.createElement('div');
+    movie_explanation_container.className = "movie-explanation-container";
+
     const movie_explanation = document.createElement('div');
     movie_explanation.className = "movie-explanation";
+
+    const back_button = document.createElement('button');
+    back_button.appendChild(
+        document.createElement('p')
+            .appendChild(
+                document.createTextNode("Return to the movie list")
+        ));
+
+    back_button.className = "back-button";
+    back_button.addEventListener('click', function (){
+        show_movies();
+    });
 
     const movie_poster_explanation = document.createElement('img');
     movie_poster_explanation.className = "movie-poster-explanation";
     movie_poster_explanation.setAttribute("src", `${IMAGE_URL}${movie.poster_path}`);
 
     const movie_description_container = document.createElement('div');
-    movie_description_container.className = "movie-description_container";
+    movie_description_container.className = "movie-description-container";
 
-    const movie_title = document.createElement('p')
-    movie_title.innerHTML = ""
+    const movie_title = document.createElement('h2')
+    movie_title.innerHTML = `${movie.title}`;
 
+    const movie_date = document.createElement('p');
+    movie_date.className = "movie-description-date"
+    movie_date.innerHTML = `(${movie.release_date.slice(0, 4)})`;
 
+    const movie_overview = document.createElement('p');
+    movie_overview.className = "movie-description-overview"
+    movie_overview.innerHTML = `${movie.overview}`;
 
+    const spacer_description = document.createElement('div');
+    spacer_description.className = "spacer-description";
 
+    movie_description_container.appendChild(movie_title);
+    movie_description_container.appendChild(movie_date);
+    movie_description_container.appendChild(movie_overview);
 
+    movie_explanation.appendChild(movie_poster_explanation);
+    movie_explanation.appendChild(movie_description_container);
+
+    movie_explanation_container.appendChild(movie_explanation);
+    movie_explanation_container.appendChild(back_button);
+    movie_explanation_container.appendChild(spacer_description);
+
+    main_page.appendChild(movie_explanation_container);
 }
 
