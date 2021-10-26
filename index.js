@@ -54,6 +54,8 @@ function show_description(movie){
     main_page.classList.add("main-page-description");
     main_page.classList.remove("main-page-list");
 
+    window.scrollTo(0, 0);
+
     const movie_explanation_container = document.createElement('div');
     movie_explanation_container.className = "movie-explanation-container";
 
