@@ -18,7 +18,7 @@ header {
 }
 
 header h1 {
-    display: inline;
+    display: inline-block;
     text-align: center;
 }
 
@@ -32,14 +32,14 @@ header h1 {
 .main-page {
     background-color: #1a1a1a;
     display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
-    justify-content: space-around;
     padding: 20px;
 }
 
 .main-page-list {
     flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: space-around;
 }
 
 .main-page-description {
