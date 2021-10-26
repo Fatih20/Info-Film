@@ -1,0 +1,19 @@
+* {
+    font-family: 'Inter', sans-serif;
+    margin : 0;
+    padding: 0;
+}
+
+header {
+    background-color: black;
+    padding: 20px;
+}
+
+header h1 {
+    color: #fafafa;
+}
+
+.main-page {
+    background-color: #333;
+    padding: 20px;
+}
